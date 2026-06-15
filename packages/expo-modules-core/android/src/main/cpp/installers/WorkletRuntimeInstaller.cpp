@@ -15,7 +15,8 @@ namespace expo {
 
 void WorkletRuntimeInstaller::registerNatives() {
   javaClassLocal()->registerNatives({
-                                      makeNativeMethod("install", WorkletRuntimeInstaller::install)
+                                      makeNativeMethod("install", WorkletRuntimeInstaller::install),
+                                      makeNativeMethod("resolveUIRuntimePointer", WorkletRuntimeInstaller::resolveUIRuntimePointer)
                                     });
 }
 
