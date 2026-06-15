@@ -62,6 +62,7 @@ class ExpoAppMetricsModule extends NativeModule implements ExpoAppMetricsModuleT
   async getInactiveSessions() {
     return [];
   }
+  installJsCrashHandler() {}
   simulateCrashReport() {}
   triggerCrash() {}
   getMainSession(): Session {

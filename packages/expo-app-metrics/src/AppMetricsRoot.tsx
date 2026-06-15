@@ -10,6 +10,8 @@ import AppMetrics from './module';
 export function AppMetricsRoot({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     AppMetrics.markFirstRender();
+    // Opt into fatal JS crash capture by mounting the root. Idempotent on the native side.
+    AppMetrics.installJsCrashHandler();
   }, []);
 
   return <>{children}</>;

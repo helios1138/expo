@@ -466,6 +466,16 @@ export interface ExpoAppMetricsModuleType {
   getInactiveSessions(): Promise<DebugSession[]>;
 
   /**
+   * Installs a handler that captures fatal JavaScript crashes (an unhandled JS
+   * exception that terminates the app). Idempotent; only the first call takes
+   * effect. Call once early in the app's lifecycle.
+   *
+   * @private This API is unstable and may change without notice.
+   * @platform ios
+   */
+  installJsCrashHandler(): void;
+
+  /**
    * Simulates a crash report, attributing it to the current main session.
    * Intended for development and debugging only.
    *

@@ -134,6 +134,12 @@ public final class AppMetricsModule: Module, UpdatesStateChangeListener {
       }
     }
 
+    // Opt-in: installs the RCTFatalHandler that captures fatal JS crashes. Called from JS (after the
+    // RN runtime is up) so we wrap RN's default handler rather than racing its installation.
+    Function("installJsCrashHandler") {
+      JsCrashHandler.install()
+    }
+
     Function("simulateCrashReport") {
       simulateCrashReport()
     }
