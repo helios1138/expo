@@ -37,6 +37,19 @@ NS_SWIFT_NAME(WorkletsProvider)
 
 @end
 
+// Separate from `EXWorkletsProvider`: its adapter implementation uses the
+// worklets stable API (`StableApi.h`)
+NS_SWIFT_NAME(WorkletsRuntimeResolving)
+@protocol EXWorkletsRuntimeResolving <NSObject>
+
+// Resolves the raw `jsi::Runtime *` of the UI worklet runtime from a
+// `react-native-worklets` UI runtime holder. Returns NULL when the holder is invalid.
+- (void * _Nullable)uiRuntimePointerWithRuntimePointer:(void *)runtimePointer
+                                         holderPointer:(const void *)holderPointer
+    NS_SWIFT_NAME(uiRuntimePointer(runtimePointer:holderPointer:));
+
+@end
+
 // The adapter pod registers its provider in `+load`; the main pod's runtime
 // APIs read it lazily and degrade gracefully when nil. The setter is
 // declared in `EXWorkletsProvider+Private.h` so only the adapter can
